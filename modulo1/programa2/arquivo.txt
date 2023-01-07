@@ -1,0 +1,1 @@
+Vou ultilizar o node para ler esse arquivo txt
