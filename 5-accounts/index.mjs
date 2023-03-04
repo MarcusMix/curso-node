@@ -22,23 +22,27 @@ const operation = () => {
 		])
 		.then((response) => {
 			const action = response["action"];
-			if(action === 'Criar Conta') {
-                createAccount()
-            }
 			if (action === "Criar Conta") {
 				createAccount();
 				buildAccount();
+			}
+			if (action === "Consultar Saldo") {
+				viewMoney();
+			}
+			if (action === "Sacar") {
+				rescueMoney();
+			}
+			if (action === "Sair") {
+				exitProgram();
 			}
 		})
 		.catch((error) => console.log(error));
 };
 
 operation();
+
 //criar uma conta
 const createAccount = () => {
-    console.log(chalk.bgGreen.black('Obrigado por usar o Accounts'))
-    console.log(chalk.green('Defina as configurações da sua conta:'))
-}
 	console.log(chalk.bgGreen.black("Obrigado por usar o Accounts"));
 	console.log(chalk.green("Defina as configurações da sua conta:"));
 };
@@ -83,3 +87,11 @@ const buildAccount = () => {
 		.catch((error) => console.log(error));
 };
 
+//consultar saldo
+const viewMoney = () => {};
+
+//sacar
+const rescueMoney = () => {};
+
+//sair
+const exitProgram = () => {};
