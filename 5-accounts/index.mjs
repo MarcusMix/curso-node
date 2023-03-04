@@ -25,14 +25,11 @@ const operation = () => {
 			if (action === "Criar Conta") {
 				createAccount();
 				buildAccount();
-			}
-			if (action === "Consultar Saldo") {
+			} else if (action === "Consultar Saldo") {
 				viewMoney();
-			}
-			if (action === "Sacar") {
+			} else if (action === "Sacar") {
 				rescueMoney();
-			}
-			if (action === "Sair") {
+			} else if (action === "Sair") {
 				exitProgram();
 			}
 		})
@@ -91,7 +88,36 @@ const buildAccount = () => {
 const viewMoney = () => {};
 
 //sacar
-const rescueMoney = () => {};
+const rescueMoney = () => {
+	inquirer
+		.prompt([
+			{
+				name: "accountName",
+				message: "Qual o nome da sua conta?",
+			},
+		])
+		.then((response) => {
+			const accountName = response["accountName"];
+
+			//verificar se a conta existe
+			if (!checkAccount(accountName)) {
+				return rescueMoney();
+			}
+		})
+		.catch((error) => console.log(error));
+};
 
 //sair
-const exitProgram = () => {};
+const exitProgram = () => {
+	console.log(chalk.bgGreen.black("Obrigado por usar o Accounts!"));
+	process.exit();
+};
+
+const checkAccount = (accountName) => {
+	if (!fs.existsSync(`accounts/${accountName}.json`)) {
+		console.log(chalk.bgRed.black("Conta não exite!"));
+		return false;
+	}
+
+	return true;
+};
