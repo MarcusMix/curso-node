@@ -25,6 +25,10 @@ const operation = () => {
 			if(action === 'Criar Conta') {
                 createAccount()
             }
+			if (action === "Criar Conta") {
+				createAccount();
+				buildAccount();
+			}
 		})
 		.catch((error) => console.log(error));
 };
@@ -35,3 +39,47 @@ const createAccount = () => {
     console.log(chalk.bgGreen.black('Obrigado por usar o Accounts'))
     console.log(chalk.green('Defina as configurações da sua conta:'))
 }
+	console.log(chalk.bgGreen.black("Obrigado por usar o Accounts"));
+	console.log(chalk.green("Defina as configurações da sua conta:"));
+};
+
+const buildAccount = () => {
+	inquirer
+		.prompt([
+			{
+				name: "accountName",
+				message: "Digite um nome para a sua conta: ",
+			},
+		])
+		.then((response) => {
+			const accountName = response["accountName"];
+			console.info(accountName);
+
+			if (!fs.existsSync("accounts")) {
+				fs.mkdirSync("accounts");
+			}
+
+			if (fs.existsSync(`accounts/${accountName}.json`)) {
+				console.log(
+					chalk.bgRed.black(
+						"Essa conta já existe, escolha outro nome!"
+					)
+				);
+				buildAccount();
+				return;
+			}
+
+			fs.writeFileSync(
+				`accounts/${accountName}.json`,
+				'{"balance":0}',
+				function (error) {
+					console.log(error);
+				}
+			);
+
+			console.log(chalk.bgGreen.white("Conta criada com sucesso!"));
+			operation();
+		})
+		.catch((error) => console.log(error));
+};
+
