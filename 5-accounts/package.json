@@ -1,0 +1,23 @@
+{
+  "name": "accounts-node",
+  "version": "1.0.0",
+  "description": "projeto de banco, saque, depósito e cadastro de usuário.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "MarcusMix"
+  },
+  "keywords": [
+    "accounts"
+  ],
+  "author": "Marcus",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "inquirer": "^9.1.4"
+  }
+}
