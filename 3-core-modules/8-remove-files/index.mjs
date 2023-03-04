@@ -1,11 +1,11 @@
-import fs from 'fs'
+import fs from "fs";
 
-fs.unlink('arquivo.txt', function(error) {
-    
-    if(error) {
-        console.log(error)
-        return
-    }
+fs.unlink("arquivo.txt", function (error) {
+	if (error) {
+		console.log("Ocorreu um erro ao executar o comando!");
+		console.log(error);
+		return;
+	}
 
-    console.log('arquivo removido!')
-})
+	console.log("arquivo removido!");
+});
