@@ -5,7 +5,13 @@ import chalk from "chalk";
 //internos
 import fs from "fs";
 
-const operation = () => {
+//functions
+import createAccount from "./functions/createAccount.mjs";
+import buildAccount from "./functions/buildAccount.mjs";
+import rescueMoney from "./functions/rescueMoney.mjs";
+import exitProgram from "./functions/exitProgram.mjs";
+
+export const operation = () => {
 	inquirer
 		.prompt([
 			{
@@ -38,86 +44,5 @@ const operation = () => {
 
 operation();
 
-//criar uma conta
-const createAccount = () => {
-	console.log(chalk.bgGreen.black("Obrigado por usar o Accounts"));
-	console.log(chalk.green("Defina as configurações da sua conta:"));
-};
-
-const buildAccount = () => {
-	inquirer
-		.prompt([
-			{
-				name: "accountName",
-				message: "Digite um nome para a sua conta: ",
-			},
-		])
-		.then((response) => {
-			const accountName = response["accountName"];
-			console.info(accountName);
-
-			if (!fs.existsSync("accounts")) {
-				fs.mkdirSync("accounts");
-			}
-
-			if (fs.existsSync(`accounts/${accountName}.json`)) {
-				console.log(
-					chalk.bgRed.black(
-						"Essa conta já existe, escolha outro nome!"
-					)
-				);
-				buildAccount();
-				return;
-			}
-
-			fs.writeFileSync(
-				`accounts/${accountName}.json`,
-				'{"balance":0}',
-				function (error) {
-					console.log(error);
-				}
-			);
-
-			console.log(chalk.bgGreen.white("Conta criada com sucesso!"));
-			operation();
-		})
-		.catch((error) => console.log(error));
-};
-
 //consultar saldo
 const viewMoney = () => {};
-
-//sacar
-const rescueMoney = () => {
-	inquirer
-		.prompt([
-			{
-				name: "accountName",
-				message: "Qual o nome da sua conta?",
-			},
-		])
-		.then((response) => {
-			const accountName = response["accountName"];
-
-			//verificar se a conta existe
-			if (!checkAccount(accountName)) {
-				return rescueMoney();
-			}
-		})
-		.catch((error) => console.log(error));
-};
-
-//sair
-const exitProgram = () => {
-	console.log(chalk.bgGreen.black("Obrigado por usar o Accounts!"));
-	process.exit();
-};
-
-const checkAccount = (accountName) => {
-	if (!fs.existsSync(`accounts/${accountName}.json`)) {
-		console.log(chalk.bgRed.black("Conta não exite!"));
-		return false;
-	}
-
-	return true;
-};
