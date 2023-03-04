@@ -22,9 +22,16 @@ const operation = () => {
 		])
 		.then((response) => {
 			const action = response["action"];
-			console.log(action);
+			if(action === 'Criar Conta') {
+                createAccount()
+            }
 		})
 		.catch((error) => console.log(error));
 };
 
 operation();
+//criar uma conta
+const createAccount = () => {
+    console.log(chalk.bgGreen.black('Obrigado por usar o Accounts'))
+    console.log(chalk.green('Defina as configurações da sua conta:'))
+}
