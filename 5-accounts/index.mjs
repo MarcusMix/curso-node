@@ -11,6 +11,9 @@ import buildAccount from "./functions/buildAccount.mjs";
 import rescueMoney from "./functions/rescueMoney.mjs";
 import exitProgram from "./functions/exitProgram.mjs";
 
+import getAccount from "./functions/getAccount.mjs";
+import deposit from "./functions/deposit.mjs";
+
 export const operation = () => {
 	inquirer
 		.prompt([
@@ -20,6 +23,7 @@ export const operation = () => {
 				message: "O que você deseja fazer?",
 				choices: [
 					"Criar Conta",
+					"Depositar",
 					"Consultar Saldo",
 					"Sacar",
 					"Sair",
@@ -31,6 +35,8 @@ export const operation = () => {
 			if (action === "Criar Conta") {
 				createAccount();
 				buildAccount();
+			} else if (action === "Depositar") {
+				deposit();
 			} else if (action === "Consultar Saldo") {
 				viewMoney();
 			} else if (action === "Sacar") {
@@ -43,6 +49,9 @@ export const operation = () => {
 };
 
 operation();
+
+//depositar
+
 
 //consultar saldo
 const viewMoney = () => {};
