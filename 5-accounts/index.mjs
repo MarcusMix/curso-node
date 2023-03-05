@@ -1,18 +1,13 @@
 //externos
 import inquirer from "inquirer";
-import chalk from "chalk";
-
-//internos
-import fs from "fs";
 
 //functions
 import createAccount from "./functions/createAccount.mjs";
 import buildAccount from "./functions/buildAccount.mjs";
 import rescueMoney from "./functions/rescueMoney.mjs";
 import exitProgram from "./functions/exitProgram.mjs";
-
-import getAccount from "./functions/getAccount.mjs";
 import deposit from "./functions/deposit.mjs";
+import viewMoney from "./functions/viewMoney.mjs";
 
 export const operation = () => {
 	inquirer
@@ -49,9 +44,3 @@ export const operation = () => {
 };
 
 operation();
-
-//depositar
-
-
-//consultar saldo
-const viewMoney = () => {};
