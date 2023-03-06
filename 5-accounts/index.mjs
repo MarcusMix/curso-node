@@ -16,7 +16,7 @@ export const operation = () => {
 			{
 				type: "list",
 				name: "action",
-				message: "O que você deseja fazer?",
+				message: "\nO que você deseja fazer?",
 				choices: [
 					"Criar Conta",
 					"Excluir Conta",
