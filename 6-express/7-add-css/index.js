@@ -4,7 +4,7 @@ const port = 4000;
 
 const path = require("path");
 
-const users = require('./users')
+const users = require("./users");
 
 //transformando em código legível obj
 app.use(
@@ -16,21 +16,20 @@ app.use(
 app.use(express.json());
 
 //arquivos estáticos
-app.use(express.static('public'))
+app.use(express.static("public"));
 
 //caminho da pasta templates
 const basePath = path.join(__dirname, "templates");
 
-app.use('/users', users)
-
+app.use("/users", users);
 
 app.get("/", (req, res) => {
 	res.sendFile(`${basePath}/index.html`);
 });
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
 	res.status(404).sendFile(`${basePath}/404.html`);
-})
+});
 
 app.listen(port, () => {
 	console.log(`app rodando na porta ${port}`);
