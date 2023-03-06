@@ -12,14 +12,14 @@ const removeAmount = (accountName, amount) => {
 
 	if (!amount) {
 		console.log(
-			chalk.bgRed("Ocorreu um erro, tente novamennte mais tarde!")
+			chalk.bgRed("\nOcorreu um erro, tente novamennte mais tarde!")
 		);
 
 		return rescueMoney();
 	}
 
 	if (accountData.balance < amount) {
-		console.log(chalk.bgRed("Valor indisponível! Tente novamente!"));
+		console.log(chalk.bgRed("\nValor indisponível! Tente novamente!"));
 
 		return rescueMoney();
 	}
@@ -37,7 +37,7 @@ const removeAmount = (accountName, amount) => {
 
 	console.log(
 		chalk.bgGreenBright(
-			`Sucesso! Foi realizado um saque de R$${amount} da sua conta!`
+			`\nSucesso! Foi realizado um saque de R$${amount} da sua conta!`
 		)
 	);
 
