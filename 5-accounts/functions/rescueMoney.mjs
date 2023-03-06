@@ -1,6 +1,6 @@
 //functions
 import checkAccount from "./checkAccount.mjs";
-import removeAmount from "./removeAccount.mjs";
+import removeAmount from "./removeAmount.mjs";
 
 //modules
 import inquirer from "inquirer";
