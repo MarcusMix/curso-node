@@ -8,6 +8,7 @@ import rescueMoney from "./functions/rescueMoney.mjs";
 import exitProgram from "./functions/exitProgram.mjs";
 import deposit from "./functions/deposit.mjs";
 import viewMoney from "./functions/viewMoney.mjs";
+import deleteAccount from "./functions/deleteAccount.mjs";
 
 export const operation = () => {
 	inquirer
@@ -18,6 +19,7 @@ export const operation = () => {
 				message: "O que você deseja fazer?",
 				choices: [
 					"Criar Conta",
+					"Excluir Conta",
 					"Depositar",
 					"Consultar Saldo",
 					"Sacar",
@@ -30,6 +32,8 @@ export const operation = () => {
 			if (action === "Criar Conta") {
 				createAccount();
 				buildAccount();
+			} else if (action === "Excluir Conta") {
+				deleteAccount();
 			} else if (action === "Depositar") {
 				deposit();
 			} else if (action === "Consultar Saldo") {
