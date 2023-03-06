@@ -3,7 +3,7 @@ import inquirer from "inquirer";
 import chalk from "chalk";
 
 //internos
-import fs, { existsSync } from "fs";
+import fs from "fs";
 
 import { operation } from "../index.mjs";
 
@@ -17,7 +17,6 @@ const buildAccount = () => {
 		])
 		.then((response) => {
 			const accountName = response["accountName"];
-			console.info(accountName);
 
 			if (!fs.existsSync("accounts")) {
 				fs.mkdirSync("accounts");
@@ -46,7 +45,10 @@ const buildAccount = () => {
 
 					fs.writeFileSync(
 						`accounts/${accountName}.json`,
-						`{"balance":0}, {"cpf": ${cpfAccount}}`,
+						`{
+							"balance":0, 
+							"cpf": ${cpfAccount}
+						}`,
 						function (error) {
 							console.log(error);
 						}
@@ -58,7 +60,8 @@ const buildAccount = () => {
 						)
 					);
 					operation();
-				});
+				})
+				.catch((error) => console.log(error));
 		})
 		.catch((error) => console.log(error));
 };
