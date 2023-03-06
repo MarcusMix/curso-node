@@ -2,7 +2,7 @@
 import getAccount from "./getAccount.mjs";
 
 //modules
-import fs from 'fs'
+import fs from "fs";
 import chalk from "chalk";
 
 const addAmount = (accountName, amount) => {
@@ -29,4 +29,4 @@ const addAmount = (accountName, amount) => {
 	);
 };
 
-export default addAmount
+export default addAmount;
