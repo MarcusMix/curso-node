@@ -3,7 +3,7 @@ import inquirer from "inquirer";
 import chalk from "chalk";
 
 //internos
-import fs from "fs";
+import fs, { existsSync } from "fs";
 
 import { operation } from "../index.mjs";
 
@@ -33,18 +33,34 @@ const buildAccount = () => {
 				return;
 			}
 
-			fs.writeFileSync(
-				`accounts/${accountName}.json`,
-				'{"balance":0}',
-				function (error) {
-					console.log(error);
-				}
-			);
+			inquirer
+				.prompt([
+					{
+						name: "CPF",
+						message: "Qual seu CPF",
+					},
+				])
+				.then((response) => {
+					const cpfAccount = response["CPF"];
+					console.log(cpfAccount);
 
-			console.log(chalk.bgGreen.white("Conta criada com sucesso!"));
-			operation();
+					fs.writeFileSync(
+						`accounts/${accountName}.json`,
+						`{"balance":0}, {"cpf": ${cpfAccount}}`,
+						function (error) {
+							console.log(error);
+						}
+					);
+
+					console.log(
+						chalk.bgGreen.white(
+							"Conta criada com sucesso!"
+						)
+					);
+					operation();
+				});
 		})
 		.catch((error) => console.log(error));
 };
 
-export default buildAccount
+export default buildAccount;
