@@ -9,7 +9,7 @@ const addAmount = (accountName, amount) => {
 	const accountData = getAccount(accountName);
 
 	if (!amount) {
-		console.log(chalk.bgRed.black("Ocorreu um erro!"));
+		console.log(chalk.bgRed.black("\nOcorreu um erro!"));
 		return deposit();
 	}
 
@@ -25,7 +25,7 @@ const addAmount = (accountName, amount) => {
 	);
 
 	console.log(
-		chalk.green(`Foi depositado o valor de R$${amount} na sua conta!`)
+		chalk.green(`\nFoi depositado o valor de R$${amount} na sua conta!`)
 	);
 };
 
