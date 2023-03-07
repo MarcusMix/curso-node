@@ -3,7 +3,11 @@ const exphbs = require("express-handlebars");
 
 const app = express();
 
-app.engine("handlebars", exphbs.engine());
+const hbs = exphbs.create({
+	partialsDir: ["views/partials"],
+});
+
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 //membros page
@@ -21,6 +25,32 @@ app.get("/post", (req, res) => {
 	};
 
 	res.render("post", { postData });
+});
+
+//blog page
+app.get("/blog", (req, res) => {
+	const posts = [
+		{
+			title: "Produtos legais",
+			category: "roupas e calcados",
+			body: "...",
+			comments: 9,
+		},
+		{
+			title: "Produtos chatos",
+			category: "cuecas e calcinhas",
+			body: "...",
+			comments: 3,
+		},
+		{
+			title: "Produtos normais",
+			category: "botas e gravatas",
+			body: "...",
+			comments: 1,
+		},
+	];
+
+	res.render("blog", { posts });
 });
 
 //homepage
