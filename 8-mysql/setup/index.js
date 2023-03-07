@@ -54,6 +54,23 @@ app.get("/books", (req, res) => {
 	});
 });
 
+//pegar livro específico
+app.get("/books/:id", (req, res) => {
+	const id = req.params.id;
+	const query = `SELECT * FROM books WHERE id = ${id}`;
+
+	connection.query(query, (error, data) => {
+		if (error) {
+			console.log(error);
+			return;
+		}
+
+		const book = data[0];
+
+		res.render("book", { book });
+	});
+});
+
 //page
 app.get("/", (req, res) => {
 	res.render("home");
