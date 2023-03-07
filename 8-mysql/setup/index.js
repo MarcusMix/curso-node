@@ -33,7 +33,24 @@ app.post("/books/insertbook", (req, res) => {
 			console.log(error);
 		}
 
-		res.redirect("/");
+		res.redirect("/books");
+	});
+});
+
+//pegar livros
+app.get("/books", (req, res) => {
+	const query = "SELECT * FROM books";
+
+	connection.query(query, (error, data) => {
+		if (error) {
+			console.log(error);
+			return;
+		}
+
+		const books = data;
+		console.log(books);
+
+		res.render("books", { books });
 	});
 });
 
