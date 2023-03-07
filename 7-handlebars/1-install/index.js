@@ -3,6 +3,11 @@ const exphbs = require("express-handlebars");
 
 const app = express();
 
+
+//config express
+app.use(express.static('public')) //arquivos estaticos -> estilos, imagens etc...
+
+//config handlebars
 const hbs = exphbs.create({
 	partialsDir: ["views/partials"],
 });
@@ -61,9 +66,8 @@ app.get("/", (req, res) => {
 	};
 
 	const dado = "um dado qualquer";
-
-	//exmplo de autenticação
 	const auth = true;
+
 	res.render("home", { user: user, dado, auth });
 });
 
