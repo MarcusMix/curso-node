@@ -1,0 +1,29 @@
+body {
+	background-color: bisque;
+	font-family: Helvetica, sans-serif;
+	margin: 0 20%;
+}
+
+.form-control {
+	display: flex;
+	flex-direction: column;
+	margin: 1rem;
+	margin: 0 auto;
+}
+
+.form-control label {
+	font-weight: bold;
+	margin: 1rem;
+}
+
+.form-control input {
+	padding: 15px;
+	margin-top: 1rem;
+	border-radius: 10px;
+}
+
+.form {
+	margin: 10px auto;
+	padding: 15px;
+	border-radius: 10px;
+}
