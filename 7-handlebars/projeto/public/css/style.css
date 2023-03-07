@@ -1,0 +1,29 @@
+body {
+	background-color: burlywood;
+	padding: 2rem;
+}
+
+h1 {
+	color: crimson;
+}
+
+h2 {
+	color: goldenrod;
+}
+
+footer {
+	margin-top: 32%;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.products {
+	background-color: azure;
+	padding: 2rem;
+	border-radius: 1rem;
+	margin: 1rem;
+}
