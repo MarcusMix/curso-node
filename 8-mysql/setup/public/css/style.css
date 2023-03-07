@@ -4,6 +4,10 @@ body {
 	margin: 0 20%;
 }
 
+h1 {
+	text-align: center;
+}
+
 .form-control {
 	display: flex;
 	flex-direction: column;
@@ -26,4 +30,26 @@ body {
 	margin: 10px auto;
 	padding: 15px;
 	border-radius: 10px;
+}
+
+.books-container {
+	width: 450px;
+	margin: 0 auto;
+}
+
+.books-container div {
+	border-bottom: 1px solid #ccc;
+	padding: 5px;
+	margin: 5px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+a {
+	text-decoration: none;
+	text-align: center;
+	padding: 10px;
+	margin: 0 auto;
 }
