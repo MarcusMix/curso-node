@@ -20,6 +20,24 @@ app.use(express.static("public"));
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
 
+//edit book
+app.get("/books/edit/:id", (req, res) => {
+	const id = req.params.id;
+
+	const query = `SELECT * FROM books WHERE id = ${id}`;
+
+	connection.query(query, (error, data) => {
+		if (error) {
+			console.log(error);
+			return;
+		}
+
+		const book = data[0];
+
+		res.redirect("editbook", { book });
+	});
+});
+
 //books page POST
 app.post("/books/insertbook", (req, res) => {
 	const title = req.body.title;
@@ -33,7 +51,7 @@ app.post("/books/insertbook", (req, res) => {
 			console.log(error);
 		}
 
-		res.redirect("/books");
+		res.redirect("books");
 	});
 });
 
@@ -48,7 +66,6 @@ app.get("/books", (req, res) => {
 		}
 
 		const books = data;
-		console.log(books);
 
 		res.render("books", { books });
 	});
