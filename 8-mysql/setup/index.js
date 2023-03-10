@@ -23,7 +23,6 @@ app.set("view engine", "handlebars");
 //edit book
 app.get("/books/edit/:id", (req, res) => {
 	const id = req.params.id;
-
 	const query = `SELECT * FROM books WHERE id = ${id}`;
 
 	connection.query(query, (error, data) => {
@@ -34,12 +33,13 @@ app.get("/books/edit/:id", (req, res) => {
 
 		const book = data[0];
 
-		res.redirect("editbook", { book });
+		res.render("editbook", { book });
 	});
 });
 
+
 //update book
-app.post("/books/updatebook", (req, res) => {
+app.post("/books/updatebooks", (req, res) => {
 	const { id } = req.body;
 	const { title } = req.body;
 	const { pages } = req.body;
@@ -55,6 +55,7 @@ app.post("/books/updatebook", (req, res) => {
 		res.redirect("/books");
 	});
 });
+
 
 //books page POST
 app.post("/books/insertbook", (req, res) => {
