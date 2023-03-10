@@ -20,6 +20,21 @@ app.use(express.static("public"));
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
 
+//delete book
+app.post("/books/remove/:id", (req, res) => {
+	const id = req.params.id;
+	const query = `DELETE FROM books WHERE id = ${id}`;
+
+	connection.query(query, (error) => {
+		if (error) {
+			console.log(error);
+			return;
+		}
+
+		res.redirect("/books");
+	});
+});
+
 //edit book
 app.get("/books/edit/:id", (req, res) => {
 	const id = req.params.id;
@@ -36,7 +51,6 @@ app.get("/books/edit/:id", (req, res) => {
 		res.render("editbook", { book });
 	});
 });
-
 
 //update book
 app.post("/books/updatebooks", (req, res) => {
@@ -55,7 +69,6 @@ app.post("/books/updatebooks", (req, res) => {
 		res.redirect("/books");
 	});
 });
-
 
 //books page POST
 app.post("/books/insertbook", (req, res) => {
