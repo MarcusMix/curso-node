@@ -38,6 +38,24 @@ app.get("/books/edit/:id", (req, res) => {
 	});
 });
 
+//update book
+app.post("/books/updatebook", (req, res) => {
+	const { id } = req.body;
+	const { title } = req.body;
+	const { pages } = req.body;
+
+	const query = `UPDATE books SET title = '${title}', pages = '${pages}' WHERE id = ${id}`;
+
+	connection.query(query, (error, data) => {
+		if (error) {
+			console.log(error);
+			return;
+		}
+
+		res.redirect("/books");
+	});
+});
+
 //books page POST
 app.post("/books/insertbook", (req, res) => {
 	const title = req.body.title;
