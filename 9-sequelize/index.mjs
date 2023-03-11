@@ -24,11 +24,21 @@ app.use(e.static("public"));
 app.engine("handlebars", ExpressHandlebars.engine());
 app.set("view engine", "handlebars");
 
+//delete user
+app.post("/users/delete/:id", async (req, res) => {
+	const id = req.params.id;
+
+	await User.destroy({ where: { id: id } });
+
+	res.redirect("/");
+});
+
 //create user
 app.get("/users/create", (req, res) => {
 	res.render("adduser");
 });
 
+//find one user (detail)
 app.get("/users/:id", async (req, res) => {
 	const id = req.params.id;
 
@@ -37,6 +47,7 @@ app.get("/users/:id", async (req, res) => {
 	res.render("userview", { user });
 });
 
+//create user in db
 app.post("/users/create", async (req, res) => {
 	const { name } = req.body;
 	const { occupation } = req.body;
