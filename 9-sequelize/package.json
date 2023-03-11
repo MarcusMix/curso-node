@@ -2,11 +2,12 @@
   "name": "setup",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./index.mjs localhost 3000"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
