@@ -77,3 +77,15 @@ a:hover {
 .item p {
 	padding: 0.5rem;
 }
+
+.details {
+	border: 2px rgb(0, 255, 98) solid;
+	border-radius: 0.5rem;
+}
+
+.userview {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+}
