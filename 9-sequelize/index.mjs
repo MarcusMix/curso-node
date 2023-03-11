@@ -4,6 +4,8 @@ import ExpressHandlebars from "express-handlebars";
 
 import sequelize from "./db/connection.mjs";
 
+import { User } from "./models/User.mjs";
+
 const app = e();
 
 //pegar os dados do body
@@ -22,9 +24,35 @@ app.use(e.static("public"));
 app.engine("handlebars", ExpressHandlebars.engine());
 app.set("view engine", "handlebars");
 
+//create user
+app.get("/users/create", (req, res) => {
+	res.render("adduser");
+});
+
+app.post("/users/create", async (req, res) => {
+	const { name } = req.body;
+	const { occupation } = req.body;
+	let { newsletter } = req.body;
+
+	if (newsletter === "on") {
+		newsletter = true;
+	} else {
+		newsletter = false;
+	}
+
+	await User.create({ name, occupation, newsletter });
+
+	res.redirect("/");
+});
+
 //page
 app.get("/", (req, res) => {
 	res.render("home");
 });
 
-app.listen(3000);
+sequelize
+	.sync()
+	.then(() => {
+		app.listen(3000);
+	})
+	.catch((error) => console.log(error));
