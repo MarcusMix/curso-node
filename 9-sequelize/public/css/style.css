@@ -59,4 +59,21 @@ a:hover {
 	text-decoration: underline;
 }
 
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
 
+.item {
+	border: 2px solid grey;
+	display: flex;
+	justify-content: center;
+	margin: 0.24rem;
+	width: 300px;
+}
+
+.item p {
+	padding: 0.5rem;
+}
