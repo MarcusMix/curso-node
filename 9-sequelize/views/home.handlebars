@@ -1,1 +1,10 @@
-<h1>oi</h1>
+<h1>Usuários cadastrados</h1>
+
+<div class="container">
+	{{#each users}}
+		<div class="item">
+			<p>{{this.name}}</p>
+			<p>{{this.occupation}}</p>
+		</div>
+	{{/each}}
+</div>
