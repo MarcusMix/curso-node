@@ -29,6 +29,14 @@ app.get("/users/create", (req, res) => {
 	res.render("adduser");
 });
 
+app.get("/users/:id", async (req, res) => {
+	const id = req.params.id;
+
+	const user = await User.findOne({ raw: true, where: { id: id } });
+
+	res.render("userview", { user });
+});
+
 app.post("/users/create", async (req, res) => {
 	const { name } = req.body;
 	const { occupation } = req.body;
@@ -47,11 +55,10 @@ app.post("/users/create", async (req, res) => {
 
 //page
 app.get("/", async (req, res) => {
+	const users = await User.findAll({ raw: true });
+	console.log(users);
 
-	const users = await User.findAll({raw: true})
-	console.log(users)
-
-	res.render("home", {users: users});
+	res.render("home", { users: users });
 });
 
 sequelize
