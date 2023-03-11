@@ -9,5 +9,8 @@
 		<div class="details">
 			<a href="/users/{{this.id}}">Detalhes</a>
 		</div>
+		<form action="/users/delete/{{this.id}}" method="POST" class="btn">
+			<input type="submit" value="Excluir" />
+		</form>
 	{{/each}}
 </div>
