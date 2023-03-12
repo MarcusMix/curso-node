@@ -121,3 +121,9 @@ a:hover {
 	justify-content: space-between;
 	margin: 0 10%;
 }
+
+.adress {
+	margin-top: 1rem;
+	border-top: 1px solid grey;
+	padding-bottom: 5rem;
+}

@@ -61,4 +61,16 @@
 			<input type="submit" value="Cadastrar" />
 		</div>
 	</form>
+	<div class="adress">
+		<h2>Lista de Endereços: </h2>
+		{{#each user.Adresses}}
+			<p>#{{this.id}}
+				-
+				{{this.street}}
+				{{this.number}}
+				-
+				{{this.city}}/{{this.country}}
+			</p>
+		{{/each}}
+	</div>
 </div>
