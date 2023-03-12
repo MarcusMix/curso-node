@@ -25,6 +25,18 @@ app.use(e.static("public"));
 app.engine("handlebars", ExpressHandlebars.engine());
 app.set("view engine", "handlebars");
 
+//delete adress
+app.post("/adress/delete", async (req, res) => {
+	const { id } = req.body;
+	const { UserId } = req.body;
+
+	await Adress.destroy({
+		where: { id: id },
+	});
+
+	res.redirect(`/users/edit/${UserId}`);
+});
+
 //add adress
 app.post("/adress/create", async (req, res) => {
 	const { UserId } = req.body;
