@@ -6,11 +6,20 @@
 			<p>{{this.name}}</p>
 			<p>{{this.occupation}}</p>
 		</div>
-		<div class="details">
-			<a href="/users/{{this.id}}">Detalhes</a>
+		<div class="container-btn">
+			<div class="details">
+				<a href="/users/{{this.id}}">Detalhes</a>
+			</div>
+			<div class="details">
+				<a href="/users/edit/{{this.id}}">Editar</a>
+			</div>
+			<form
+				action="/users/delete/{{this.id}}"
+				method="POST"
+				class="btn"
+			>
+				<input type="submit" value="Excluir" />
+			</form>
 		</div>
-		<form action="/users/delete/{{this.id}}" method="POST" class="btn">
-			<input type="submit" value="Excluir" />
-		</form>
 	{{/each}}
 </div>
