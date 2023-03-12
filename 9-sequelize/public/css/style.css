@@ -81,6 +81,7 @@ a:hover {
 .details {
 	border: 2px rgb(0, 255, 98) solid;
 	border-radius: 0.5rem;
+	margin-top: 0.5rem;
 }
 
 .userview {
@@ -96,4 +97,16 @@ a:hover {
 	background-color: rosybrown;
 	border-radius: 0.5rem;
 	cursor: pointer;
+	margin: 0 auto;
+}
+
+.container-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0.25rem;
+}
+
+.container-btn div {
+	margin: 0.25rem;
 }
