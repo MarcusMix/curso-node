@@ -64,13 +64,25 @@
 	<div class="adress">
 		<h2>Lista de Endereços: </h2>
 		{{#each user.Adresses}}
-			<p>#{{this.id}}
+			<div>#{{this.id}}
 				-
 				{{this.street}}
 				{{this.number}}
 				-
 				{{this.city}}/{{this.country}}
-			</p>
+				<form action="/adress/delete" method="POST">
+					<input
+						type="hidden"
+						name="UserId"
+						value="{{this.UserId}}"
+					/>
+					<input
+						type="hidden"
+						name="id"
+						value="{{this.id}}"
+					/>
+					<input type="submit" value="Excluir" /></form>
+			</div>
 		{{/each}}
 	</div>
 </div>
