@@ -5,6 +5,7 @@ import ExpressHandlebars from "express-handlebars";
 import sequelize from "./db/connection.mjs";
 
 import { User } from "./models/User.mjs";
+import { Adress } from "./models/Adress.mjs";
 
 const app = e();
 
@@ -106,8 +107,8 @@ app.get("/", async (req, res) => {
 });
 
 sequelize
-	.sync()
-	// .sync(force: true) dar um drop na tabela e recriar
+	// .sync()
+	.sync({ force: true })
 	.then(() => {
 		app.listen(3000);
 	})
