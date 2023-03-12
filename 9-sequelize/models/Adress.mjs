@@ -21,4 +21,5 @@ export const Adress = sequelize.define("Adress", {
 	},
 });
 
-Adress.belongsTo(User)
+User.hasMany(Adress);
+Adress.belongsTo(User);
