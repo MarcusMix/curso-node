@@ -53,7 +53,7 @@ app.post("/users/update", async (req, res) => {
 	};
 
 	await User.update(userData, { where: { id: id } });
-	
+
 	res.redirect("/");
 });
 
@@ -107,6 +107,7 @@ app.get("/", async (req, res) => {
 
 sequelize
 	.sync()
+	// .sync(force: true) dar um drop na tabela e recriar
 	.then(() => {
 		app.listen(3000);
 	})
