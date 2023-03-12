@@ -24,6 +24,39 @@ app.use(e.static("public"));
 app.engine("handlebars", ExpressHandlebars.engine());
 app.set("view engine", "handlebars");
 
+//edit user
+app.get("/users/edit/:id", async (req, res) => {
+	const id = req.params.id;
+
+	const user = await User.findOne({ raw: true, where: { id: id } });
+
+	res.render("useredit", { user });
+});
+
+app.post("/users/update", async (req, res) => {
+	const { id } = req.body;
+	const { name } = req.body;
+	const { occupation } = req.body;
+	let { newsletter } = req.body;
+
+	if (newsletter === "on") {
+		newsletter = true;
+	} else {
+		newsletter = false;
+	}
+
+	const userData = {
+		id,
+		name,
+		occupation,
+		newsletter,
+	};
+
+	await User.update(userData, { where: { id: id } });
+	
+	res.redirect("/");
+});
+
 //delete user
 app.post("/users/delete/:id", async (req, res) => {
 	const id = req.params.id;
