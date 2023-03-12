@@ -22,7 +22,8 @@ h1 {
 .form-control {
 	display: flex;
 	flex-direction: column;
-	margin: 1rem; 
+	justify-content: center;
+	/* align-items: center;  */
 	margin: 0 auto;
 }
 
@@ -33,8 +34,12 @@ h1 {
 
 .form-control input {
 	padding: 15px;
-	margin-top: 1rem;
+	margin: 0.25rem;
 	border-radius: 10px;
+}
+
+.adress-container h2 {
+	text-align: center;
 }
 
 .form {
@@ -109,4 +114,10 @@ a:hover {
 
 .container-btn div {
 	margin: 0.25rem;
+}
+
+.check {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 10%;
 }
