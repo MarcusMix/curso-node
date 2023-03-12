@@ -25,6 +25,27 @@ app.use(e.static("public"));
 app.engine("handlebars", ExpressHandlebars.engine());
 app.set("view engine", "handlebars");
 
+//add adress
+app.post("/adress/create", async (req, res) => {
+	const { UserId } = req.body;
+	const { street } = req.body;
+	const { country } = req.body;
+	const { number } = req.body;
+	const { city } = req.body;
+
+	const adress = {
+		UserId,
+		street,
+		country,
+		number,
+		city,
+	};
+
+	await Adress.create(adress)
+
+	res.redirect(`/users/edit/${UserId}`)
+});
+
 //edit user
 app.get("/users/edit/:id", async (req, res) => {
 	const id = req.params.id;
@@ -107,8 +128,8 @@ app.get("/", async (req, res) => {
 });
 
 sequelize
-	// .sync()
-	.sync({ force: true })
+	.sync()
+	// .sync({ force: true })
 	.then(() => {
 		app.listen(3000);
 	})
