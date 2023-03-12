@@ -1,26 +1,64 @@
 <h1>Editando {{user.name}} </h1>
 <form action="/users/update" method="POST" class="form">
-<input type="hidden" name="id" value="{{user.id}}">
+	<input type="hidden" name="id" value="{{user.id}}" />
 	<div class="form-control">
 		<label for="name">Nome:</label>
-		<input type="text" name="name" placeholder="Digite o nome..." value="{{user.name}}"/>
-	</div>
-	<div class="form-control">
+		<input
+			type="text"
+			name="name"
+			placeholder="Digite o nome..."
+			value="{{user.name}}"
+		/>
+
 		<label for="occupation">Ocupação:</label>
 		<input
 			type="text"
 			name="occupation"
 			placeholder="Digite a profissão..."
-            value="{{user.occupation}}"
+			value="{{user.occupation}}"
 		/>
+		<div class="check">
+			<label for="newsletter">Enviar promoções?</label>
+			{{#if user.newsletter}}
+				<input type="checkbox" name="newsletter" checked />
+			{{else}}
+				<input type="checkbox" name="newsletter" />
+			{{/if}}
+		</div>
+		<input type="submit" value="Editar" />
 	</div>
-	<div class="form-control">
-        {{#if user.newsletter}}
-		<input type="checkbox" name="newsletter" checked />
-        {{else}}
-        <input type="checkbox" name="newsletter"  />
-        {{/if}}
-		<label for="newsletter">Enviar promoções?</label>
-	</div>
-	<input type="submit" name="Editar" />
 </form>
+
+<div class="adress-container">
+	<h2>Endereço: </h2>
+	<form action="/adress/create" method="POST">
+		<input type="hidden" name="UserId" value="{{user.id}}" />
+		<div class="form-control">
+			<label for="street">Rua:</label>
+			<input
+				type="text"
+				name="street"
+				placeholder="Digite a sua rua..."
+			/>
+			<label for="number">Número:</label>
+			<input
+				type="text"
+				name="number"
+				placeholder="Digite o número da residência..."
+			/>
+			<label for="city">Cidade:</label>
+			<input
+				type="text"
+				name="city"
+				placeholder="Digite a cidade..."
+			/>
+			<label for="country">País: </label>
+			<input
+				type="text"
+				name="country"
+				placeholder="Digite o país..."
+			/>
+			<input type="submit" value="Cadastrar" />
+		</div>
+	</form>
+</div>
