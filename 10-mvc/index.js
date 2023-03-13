@@ -8,6 +8,9 @@ import sequelize from "./db/connection.js"
 //models
 import Task from "./models/Task.js"
 
+//routes
+import taskRoutes from "./routes/taskRoutes.js"
+
 const app = e()
 
 app.engine("handlebars", ExpressHandlebars.engine())
@@ -22,6 +25,8 @@ app.use(
 app.use(e.json())
 
 app.use(e.static("public"))
+
+app.use("/tasks", taskRoutes)
 
 sequelize
     .sync()
