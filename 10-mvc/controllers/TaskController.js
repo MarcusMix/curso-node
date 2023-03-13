@@ -23,6 +23,46 @@ class TaskController {
 
         res.render("tasks/all", { tasks })
     }
+
+    static async removeTask(req, res) {
+        const { id } = req.body
+
+        await Task.destroy({ where: { id: id } })
+
+        res.redirect("/tasks")
+    }
+
+    static async editTask(req, res) {
+        const id = req.params.id
+
+        const task = await Task.findOne({ where: { id: id }, raw: true })
+
+        res.render("tasks/edit", { task })
+    }
+
+    static async editTaskPost(req, res) {
+        const id = req.body.id
+        const task = {
+            title: req.body.title,
+            description: req.body.description,
+            done: false,
+        }
+
+        await Task.update(task, { where: { id: id } })
+
+        res.redirect(`/tasks`)
+    }
+
+    static async doneTask(req, res) {
+        const { id } = req.body
+        const task = {
+            done: req.body.done === "0" ? true : false,
+        }
+
+        await Task.update(task, { where: { id: id } })
+
+        res.redirect(`/tasks`)
+    }
 }
 
 export default TaskController
