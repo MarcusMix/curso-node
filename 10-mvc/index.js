@@ -1,6 +1,12 @@
+//express & handlebars
 import e from "express"
 import ExpressHandlebars from "express-handlebars"
+
+//db
 import sequelize from "./db/connection.js"
+
+//models
+import Task from "./models/Task.js"
 
 const app = e()
 
@@ -17,4 +23,9 @@ app.use(e.json())
 
 app.use(e.static("public"))
 
-app.listen(3000)
+sequelize
+    .sync()
+    .then(() => {
+        app.listen(3000)
+    })
+    .catch((error) => console.log(error))
