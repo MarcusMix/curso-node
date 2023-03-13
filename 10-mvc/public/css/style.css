@@ -79,5 +79,40 @@ footer {
     background-color: rgb(126, 230, 143);
     padding: 0 4rem;
     bottom: 0;
-    height:  120px;
+    height: 120px;
+}
+
+.task-list {
+    list-style: none;
+    margin: 1rem;
+}
+
+.task-list li {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #efefef;
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-list .title {
+    font-weight: bold;
+    transition: 0.5s;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #1d1d1d;
+}
+
+.title:hover {
+    color: db4c3f;
+}
+
+.actions a i {
+    font-size: 1.5rem;
+    margin-right: .6rem;
+    color: #333;
+}
+
+.actions i:hover {
+    color: #db4c3f;
 }
