@@ -67,7 +67,7 @@ form input[type="submit"] {
 }
 
 .container {
-    max-width: 450px;
+    max-width: 550px;
     margin: 5rem auto;
 }
 
@@ -93,6 +93,15 @@ footer {
     border-bottom: 1px solid #efefef;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.task-list .title-done {
+    text-decoration: line-through;
+    color: #ccc;
+    font-weight: bold;
+    transition: 0.5s;
+    font-size: 1.2rem;
 }
 
 .task-list .title {
@@ -109,10 +118,34 @@ footer {
 
 .actions a i {
     font-size: 1.5rem;
-    margin-right: .6rem;
+    margin-right: 0.6rem;
     color: #333;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+
+.icon {
+    font-size: 1.5rem;
+    margin-right: 0.6rem;
+    color: #333; 
 }
 
 .actions i:hover {
     color: #db4c3f;
+}
+
+.actions form {
+    margin: 0;
+}
+
+.actions button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
