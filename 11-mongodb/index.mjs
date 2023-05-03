@@ -3,6 +3,8 @@ import ExpressHandlebars from "express-handlebars";
 
 import client from "./db/conn.mjs";
 
+import router from "./routes/productsRoutes.mjs";
+
 const app = e();
 
 app.engine("handlebars", ExpressHandlebars.engine());
@@ -15,5 +17,9 @@ app.use(
 );
 
 app.use(e.json());
+
+app.use(e.static('public'))
+
+app.use('/products', router)
 
 app.listen(3000);
