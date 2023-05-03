@@ -1,8 +1,10 @@
-import e from 'express'
+import e from "express"
 const router = e.Router()
 
-import ProductController from '../controllers/ProductController.mjs'
+import ProductController from "../controllers/ProductController.mjs"
 
-router.get('/', ProductController.showProducts)
+router.get("/create", ProductController.createProduct)
+router.post("/create", ProductController.createProductPost)
+router.get("/", ProductController.showProducts)
 
 export default router
