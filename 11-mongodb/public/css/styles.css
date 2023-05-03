@@ -6,3 +6,22 @@ body {
 h1 {
     color: red;
 }
+
+.navbar {
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin-left: 1rem;
+    list-style: none;
+}
