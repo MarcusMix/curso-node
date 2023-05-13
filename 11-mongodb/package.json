@@ -76,7 +76,7 @@
     "minimatch": "^9.0.0",
     "minimist": "^1.2.8",
     "minipass": "^5.0.0",
-    "mongodb": "^5.3.0",
+    "mongodb": "^5.5.0",
     "mongodb-connection-string-url": "^2.6.0",
     "ms": "^2.0.0",
     "negotiator": "^0.6.3",
